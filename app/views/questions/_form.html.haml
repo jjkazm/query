@@ -1,1 +1,3 @@
-= form_tag({controller: "questions", action: "preview"}, method: "get")
+= form_tag({controller: "questions", action: "new"}, method: "get") do
+  = text_field(:question, :body)
+  = submit_tag('Show result')

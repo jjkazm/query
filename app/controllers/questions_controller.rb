@@ -1,7 +1,11 @@
 class QuestionsController < ApplicationController
 
   def new
-    @question = Question.new
+    @new_question = Question.new
+    unless params[:question].nil?
+      @previous_question = Question.new(params.require(:question).permit(:body))
+    end
+
   end
 
   def create

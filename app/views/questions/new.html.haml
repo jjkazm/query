@@ -1,5 +1,6 @@
 %h1 ActiveRecord to SQL
 = render "form"
-= render "save"
+- if @previous_question
+  = render "save"
 = render "sql"
 = render "result"
