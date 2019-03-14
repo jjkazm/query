@@ -4,7 +4,9 @@ class QuestionsController < ApplicationController
     @new_question = Question.new
     unless params[:question].nil?
       @previous_question = Question.new(params.require(:question).permit(:body))
+      @result = QuestionExecutor.new(params[:question][:body])
     end
+
 
   end
 
