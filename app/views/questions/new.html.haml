@@ -1,6 +1,6 @@
 %h1 ActiveRecord to SQL
-= render "form"
+= render "/questions/partials/form"
 - if @previous_question
-  = render "save"
-= render "sql"
-= render "result"
+  = render "/questions/partials/save"
+= render "/questions/partials/sql"
+= render "/questions/partials/result"
