@@ -4,7 +4,6 @@ class QuestionExecutor
     @question = question
   end
   def call
-    binding.pry
     @question.gsub("\"","").gsub("\'")
   end
 end
