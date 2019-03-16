@@ -1,2 +1,13 @@
 #result
   = @result
+
+%table
+  %tr
+    - @result.column_names.each do |field|
+      %td
+        = field
+  - @result.each_entry do |row|
+    %tr
+      - @result.column_names.each do |field|
+        %td
+          = row["#{field}"]
