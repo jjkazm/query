@@ -5,20 +5,8 @@ class QuestionsController < ApplicationController
     unless params[:question].nil?
       @previous_question = Question.new(params.require(:question).permit(:body))
       @result = QuestionExecutor.new(params[:question][:body]).call
-
+      @sql = show_sql
     end
-
-
-
-
-  end
-
-  def create
-
-  end
-
-  def preview
-    render :new
   end
 
   def show
@@ -27,5 +15,14 @@ class QuestionsController < ApplicationController
 
   def index
   end
+
+  private
+    def show_sql
+      begin
+        QuestionExecutor.new(params[:question][:body]).call.to_sql
+      rescue NoMethodError
+        "no SQL for this query"
+      end
+    end
 
 end
