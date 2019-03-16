@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
 
   def new
     @new_question = Question.new
-    unless params[:question].nil?
+    if !params[:question].nil?
       @previous_question = Question.new(query_params)
       @result = QuestionExecutor.new(params[:question][:body]).call
       @sql = SqlDisplayer.new(params[:question][:body]).call

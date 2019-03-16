@@ -1,3 +1,3 @@
 = form_tag({controller: "questions", action: "new"}, method: "get") do
-  = text_field(:question, :body)
+  = text_area(:question, :body, size: "50x10", value: "#{@previous_question.nil? ? "" : @previous_question.body}" )
   = submit_tag('Show result')
