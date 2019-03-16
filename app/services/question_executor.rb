@@ -7,7 +7,7 @@ class QuestionExecutor
     begin
       eval(@question)
     rescue NameError
-      "query can't be executed"
+      "invalid query"
     end
   end
 end

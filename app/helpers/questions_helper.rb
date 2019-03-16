@@ -1,8 +1,11 @@
 module QuestionsHelper
 
   def query_result(result)
-    if result == "query can't be executed"
+    binding.pry
+    if result == "invalid query"
       render html: "query can't be executed"
+    elsif result.class == Hash
+      render "/questions/partials/result_hash"
     else
       render "/questions/partials/result"
     end

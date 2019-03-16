@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
       @previous_question = Question.new(params.require(:question).permit(:body))
       @result = QuestionExecutor.new(params[:question][:body]).call
       @sql = show_sql
+      binding.pry
     end
   end
 
@@ -21,7 +22,11 @@ class QuestionsController < ApplicationController
       begin
         QuestionExecutor.new(params[:question][:body]).call.to_sql
       rescue NoMethodError
-        "no SQL for this query"
+        if @result == "query can't be executed"
+          "no SQL for this query"
+        else
+          "#{@result.class} can't be conversed to sql with to_sql method"
+        end
       end
     end
 
