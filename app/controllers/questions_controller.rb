@@ -3,10 +3,9 @@ class QuestionsController < ApplicationController
   def new
     @new_question = Question.new
     unless params[:question].nil?
-      @previous_question = Question.new(params.require(:question).permit(:body))
+      @previous_question = Question.new(query_params)
       @result = QuestionExecutor.new(params[:question][:body]).call
-      @sql = show_sql
-      binding.pry
+      @sql = SqlDisplayer.new(params[:question][:body]).call
     end
   end
 
@@ -18,16 +17,8 @@ class QuestionsController < ApplicationController
   end
 
   private
-    def show_sql
-      begin
-        QuestionExecutor.new(params[:question][:body]).call.to_sql
-      rescue NoMethodError
-        if @result == "query can't be executed"
-          "no SQL for this query"
-        else
-          "#{@result.class} can't be conversed to sql with to_sql method"
-        end
-      end
+    def query_params
+      params.require(:question).permit(:body)
     end
 
 end

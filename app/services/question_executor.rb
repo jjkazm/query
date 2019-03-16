@@ -5,9 +5,10 @@ class QuestionExecutor
   end
   def call
     begin
-      eval(@question)
+      message = "invalid query"
+      eval(@question).nil? ? message : eval(@question)
     rescue NameError
-      "invalid query"
+      message
     end
   end
 end
