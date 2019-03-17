@@ -21,6 +21,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'erb2haml', '~> 0.1.5'
 gem 'pry', '~> 0.12.2'
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
