@@ -1,3 +1,7 @@
 = form_tag({controller: "questions", action: "new"}, method: "get") do
-  = text_area(:question, :body, size: "50x10", value: "#{@previous_question.nil? ? "" : @previous_question.body}" )
-  = submit_tag('Show result')
+  .form-group
+    = text_area(:question, :body, size: "30x4",
+      value: "#{@previous_question.nil? ? "" : @previous_question.body}",
+      class: "form-control")
+  .form-group
+    = submit_tag('Show result', class: "btn btn-success")
