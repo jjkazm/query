@@ -2,23 +2,11 @@ class QuestionsController < ApplicationController
 
   def new
     @new_question = Question.new
-    unless params[:question].nil?
-      @previous_question = Question.new(params.require(:question).permit(:body))
+    if !params[:question].nil?
+      @previous_question = Question.new(query_params)
       @result = QuestionExecutor.new(params[:question][:body]).call
-
+      @sql = SqlDisplayer.new(params[:question][:body]).call
     end
-
-
-
-
-  end
-
-  def create
-
-  end
-
-  def preview
-    render :new
   end
 
   def show
@@ -27,5 +15,10 @@ class QuestionsController < ApplicationController
 
   def index
   end
+
+  private
+    def query_params
+      params.require(:question).permit(:body)
+    end
 
 end

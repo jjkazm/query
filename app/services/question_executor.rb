@@ -4,6 +4,11 @@ class QuestionExecutor
     @question = question
   end
   def call
-    @question.gsub("\"","").gsub("\'")
+    begin
+      message = "invalid query"
+      eval(@question).nil? ? message : eval(@question)
+    rescue NameError
+      message
+    end
   end
 end

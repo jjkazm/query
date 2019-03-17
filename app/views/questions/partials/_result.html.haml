@@ -1,2 +1,10 @@
-%h6 result:
-= @result
+%table
+  %tr
+    - columns(@result).each do |field|
+      %td
+        = field
+  - @result.each_entry do |row|
+    %tr
+      - columns(@result).each do |field|
+        %td
+          = row["#{field}"]

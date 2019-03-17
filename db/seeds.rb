@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 6.times do |n|
-  Salesman.create(name: Faker::Name.unique.name, city: Faker::WorldCup.city, commission: rand(12..15)/100)
+  Salesman.create(name: Faker::Name.unique.name, city: Faker::WorldCup.city, commission: rand(12..15)/100.0)
 end
 
 8.times do |n|
