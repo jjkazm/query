@@ -1,10 +1,13 @@
-%table
-  %tr
-    - columns(@result).each do |field|
-      %td
-        = field
-  - @result.each_entry do |row|
-    %tr
-      - columns(@result).each do |field|
-        %td
-          = row["#{field}"]
+.col-md-6.offset-md-3
+  %table.table.table-bordered
+    %thead.thead-dark
+      %tr
+        - columns(@result).each do |field|
+          %th
+            = field
+    %tbody
+      - @result.each_entry do |row|
+        %tr
+          - columns(@result).each do |field|
+            %td.text-nowrap
+              = row["#{field}"]
